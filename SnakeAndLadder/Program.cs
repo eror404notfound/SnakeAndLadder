@@ -15,6 +15,7 @@ namespace SnakeAndLadder
         static void Main(string[] args)
         {
             int PlayerPosition = 0;
+            int DieCount = 0;
             
             while (PlayerPosition < WINPOSITION)
             {
@@ -22,11 +23,14 @@ namespace SnakeAndLadder
                 Random Dice = new Random();
                 int diceRoll = Dice.Next(1, 7);
                 Console.WriteLine("Dice Roll " + diceRoll);
-                Random random = new Random();
                 int option = Dice.Next(0, 3);
                 
                 switch (option)
                 {
+                    case 0:
+                        Console.WriteLine("No Snake No Ladder");
+                        Console.WriteLine("Your Position is : " + PlayerPosition);
+                        break;
                     case 1:
                         PlayerPosition += diceRoll;
                         
@@ -50,11 +54,19 @@ namespace SnakeAndLadder
                         Console.WriteLine("You Got Snake");
                         Console.WriteLine("Your Position After Snake is : " + PlayerPosition);
                         break;
-
+                        DieCount++;
                 }
-                Console.ReadLine();
-
+                
+                DieCount++;
             }
+            
+            Console.WriteLine("The Number of times Dice Rolled is " + DieCount);
+            Console.ReadLine();
         }
+        
+                
+
+            
+        
     }
 }
