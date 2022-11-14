@@ -10,8 +10,11 @@ namespace SnakeAndLadder
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to snake and ladder problem");
+            int pos = 0;
+            Console.WriteLine("single player at start position : " + pos);
             Console.ReadLine();
+
+
         }
     }
 }
