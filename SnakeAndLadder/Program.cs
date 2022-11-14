@@ -6,22 +6,53 @@ using System.Threading.Tasks;
 
 namespace SnakeAndLadder
 {
-    internal class Program
+    internal class program
     {
+        public const int LADDER = 1;
+        public const int SNAKE = 2;
+        public const int NO_PLAY = 0;
+        public const int WINPOSITION = 100;
         static void Main(string[] args)
         {
-            int pos = 0;
-            Console.WriteLine("single player at start position : " + pos);
-            RollDice();
-        }
-        public static void RollDice()
-        {
-            Random random = new Random();
-            int dice = random.Next(6);
-            dice = dice + 1;
-            Console.WriteLine("Dice Num : " + dice);
-            Console.ReadLine();
+            int PlayerPosition = 0;
+            
+            while (PlayerPosition < WINPOSITION)
+            {
+                
+                Random Dice = new Random();
+                int diceRoll = Dice.Next(1, 7);
+                Console.WriteLine("Dice Roll " + diceRoll);
+                Random random = new Random();
+                int option = Dice.Next(0, 3);
+                
+                switch (option)
+                {
+                    case 0:
+                        Console.WriteLine("No Snake No Ladder");
+                        Console.WriteLine("Your Position is : " + PlayerPosition);
+                        break;
+                    case 1:
+                        PlayerPosition += diceRoll;
+                        Console.WriteLine("You Got Ladder");
+                        Console.WriteLine("Your Position After Ladder is : " + PlayerPosition);
+                        break;
+                    case 2:
+                        if (PlayerPosition < 0)
+                        {
+                            PlayerPosition = 0;
+                        }
+                        else
+                        {
+                            PlayerPosition -= diceRoll;
+                        }
+                        Console.WriteLine("You Got Snake");
+                        Console.WriteLine("Your Position After Snake is : " + PlayerPosition);
+                        break;
 
+                }
+                Console.ReadLine();
+
+            }
         }
     }
 }
