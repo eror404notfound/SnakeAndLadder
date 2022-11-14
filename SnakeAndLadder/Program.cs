@@ -27,12 +27,14 @@ namespace SnakeAndLadder
                 
                 switch (option)
                 {
-                    case 0:
-                        Console.WriteLine("No Snake No Ladder");
-                        Console.WriteLine("Your Position is : " + PlayerPosition);
-                        break;
                     case 1:
                         PlayerPosition += diceRoll;
+                        
+                        if (PlayerPosition > WINPOSITION)
+                        {
+                            PlayerPosition -= diceRoll;
+                            Console.WriteLine("Stay in some previous position " + PlayerPosition);
+                        }
                         Console.WriteLine("You Got Ladder");
                         Console.WriteLine("Your Position After Ladder is : " + PlayerPosition);
                         break;
